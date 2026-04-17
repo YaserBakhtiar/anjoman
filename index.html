@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>انجمن علوم قرآنی شهید رحمانی «رح»</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+  :root {
+    --green-dark:   #0a5c44;
+    --green-main:   #0d7a5f;
+    --green-light:  #1aab85;
+    --gold:         #c9a84c;
+    --gold-light:   #e8c97a;
+    --cream:        #fdf8f0;
+    --white:        #ffffff;
+    --text-dark:    #1a1a2e;
+    --text-mid:     #4a4a6a;
+    --shadow:       rgba(13,122,95,0.15);
+    --bg-light:     #fdf8f0;
+    --card-bg:      #ffffff;
+    --footer-bg:    #060f0c;
+    --footer-text:  rgba(255,255,255,0.65);
+  }
+
+  /* Dark mode variables */
+  body.dark-mode {
+    --cream:        #121212;
+    --white:        #1e1e1e;
+    --text-dark:    #f0f0f0;
+    --text-mid:     #b0b0b0;
+    --shadow:       rgba(0,0,0,0.3);
+    --bg-light:     #121212;
+    --card-bg:      #1e1e1e;
+    --footer-bg:    #0a0a0a;
+    --footer-text:  #aaaaaa;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    direction: rtl;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--green-main); border-radius: 4px; }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    background: var(--green-dark);
+    color: rgba(255,255,255,0.85);
+    font-size: .82rem;
+    padding: 8px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .topbar a {
+    color: var(--gold-light);
+    text-decoration: none;
+    margin-left: 14px;
+    font-size: 1.1rem;
+    transition: color .3s;
+  }
+  .topbar a:hover { color: #fff; }
+
+  /* ─── NAVBAR ─── */
+  .navbar {
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 20px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+  body.dark-mode .navbar {
+    background: rgba(30,30,30,0.97);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    height: 58px;
+    width: 58px;
+    border-radius: 12px;  /* از حالت دایره خارج شد، فقط کمی گرد */
+    border: 3px solid var(--gold);
+    object-fit: cover;
+    box-shadow: 0 3px 12px var(--shadow);
+  }
+  .nav-logo-text h2 {
+    font-size: .95rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    line-height: 1.3;
+  }
+  .nav-logo-text span {
+    font-size: .75rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600;
+    font-size: .92rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all .3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    right: 16px;
+    left: 16px;
+    height: 2px;
+    background: var(--green-light);
+    transform: scaleX(0);
+    transition: transform .3s;
+    border-radius: 2px;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a:hover { color: var(--green-main); background: rgba(13,122,95,.07); }
+
+  /* Dark mode toggle button */
+  .dark-toggle {
+    background: none;
+    border: none;
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 30px;
+    transition: background 0.3s;
+    margin-right: 8px;
+  }
+  .dark-toggle:hover {
+    background: rgba(13,122,95,0.1);
+  }
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .hamburger span {
+    display: block;
+    width: 26px;
+    height: 3px;
+    background: var(--green-dark);
+    border-radius: 3px;
+    transition: all .3s;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background:
+      linear-gradient(135deg, rgba(10,92,68,.92) 0%, rgba(13,122,95,.78) 50%, rgba(26,171,133,.65) 100%),
+      url('https://images.unsplash.com/photo-1585036156171-384164a8c675?w=1600&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,168,76,.25);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: .85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  .hero h1 {
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto 16px;
+    text-shadow: 0 2px 20px rgba(0,0,0,.3);
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero p {
+    color: rgba(255,255,255,.88);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--green-dark);
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 0 6px 20px rgba(201,168,76,.4);
+    transition: all .3s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(201,168,76,.5);
+  }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,.7);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all .3s;
+  }
+  .btn-outline:hover {
+    background: rgba(255,255,255,.15);
+    border-color: #fff;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,.6);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(10px); }
+  }
+
+  /* ─── SECTION WRAPPER ─── */
+  .section { padding: 80px 20px; }
+  .section-alt { background: var(--white); }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    display: inline-block;
+    background: rgba(13,122,95,.1);
+    color: var(--green-main);
+    padding: 5px 18px;
+    border-radius: 20px;
+    font-size: .82rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+  }
+  body.dark-mode .section-tag {
+    background: rgba(13,122,95,0.3);
+    color: var(--gold-light);
+  }
+  .section-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 900;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+  }
+  .section-divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 4px;
+    margin: 14px auto 0;
+  }
+  .section-header p {
+    color: var(--text-mid);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 16px auto 0;
+    line-height: 1.8;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .about-text h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+  }
+  .about-text h3 span { color: var(--gold); }
+  .about-text p {
+    color: var(--text-mid);
+    line-height: 2;
+    font-size: 1rem;
+    margin-bottom: 14px;
+    text-align: justify;
+  }
+  .about-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 24px;
+    text-align: center;
+  }
+  .feature-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(13,122,95,.06);
+    padding: 12px 16px;
+    border-radius: 10px;
+    border-right: 3px solid var(--green-main);
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--green-dark);
+  }
+  body.dark-mode .feature-chip {
+    background: rgba(13,122,95,0.15);
+  }
+  .feature-chip i { color: var(--green-main); font-size: 1rem; }
+  .about-image-wrap {
+    position: relative;
+  }
+  .about-card {
+    background: linear-gradient(135deg, var(--green-dark), var(--green-main));
+    border-radius: 24px;
+    padding: 40px 30px;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(10,92,68,.35);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-card::before {
+    content: '\f655';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-size: 8rem;
+    color: rgba(255,255,255,.05);
+  }
+  .about-card-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,.15);
+    border-radius: 12px; /* از حالت دایره خارج شد */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: var(--gold-light);
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255,255,255,.2);
+    overflow: hidden;
+  }
+  .about-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  .about-card h4 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .about-card p {
+    font-size: .9rem;
+    color: rgba(255,255,255,.85);
+    line-height: 1.8;
+  }
+  .about-card-year {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.2);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  .year-item { text-align: center; }
+  .year-item .num { font-size: 1.6rem; font-weight: 900; color: var(--gold-light); }
+  .year-item .lbl { font-size: .75rem; color: rgba(255,255,255,.7); }
+
+  /* ─── GOALS / CARDS ─── */
+  .goals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .goal-card {
+    background: var(--card-bg);
+    border-radius: 18px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.07);
+    border-top: 4px solid var(--green-main);
+    transition: all .35s;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .goal-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .35s;
+  }
+  .goal-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(13,122,95,.16); }
+  .goal-card:hover::after { transform: scaleX(1); }
+  .goal-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--green-main), var(--green-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 0 auto 18px;
+    box-shadow: 0 6px 16px rgba(13,122,95,.3);
+  }
+  .goal-card h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  .goal-card p {
+    font-size: .9rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* ─── MISSION STATEMENT ─── */
+  .mission {
+    background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-main) 60%, #1a9070 100%);
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission::before {
+    content: '\f655';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: -40px;
+    top: -40px;
+    font-size: 18rem;
+    color: rgba(255,255,255,.04);
+  }
+  .mission-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .mission-icon {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.12);
+    border: 2px solid rgba(255,255,255,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: var(--gold-light);
+    margin: 0 auto 28px;
+  }
+  .bismillah {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    margin-bottom: 24px;
+    font-family: 'Vazirmatn', serif;
+  }
+  .mission-text {
+    color: rgba(255,255,255,.9);
+    font-size: 1.05rem;
+    line-height: 2.2;
+    text-align: justify;
+  }
+  .mission-text p { margin-bottom: 16px; }
+
+  /* ─── LEADER ─── */
+  .leader-card {
+    background: var(--card-bg);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.12);
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .leader-image-side {
+    background: linear-gradient(180deg, var(--green-dark), var(--green-main));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .leader-image-side::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M20 20c0-5.523-4.477-10-10-10S0 14.477 0 20s4.477 10 10 10 10-4.477 10-10zm10 0c0-5.523-4.477-10-10-10'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .leader-img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 300px;  /* جلوگیری از بزرگ شدن بیش از حد */
+    border-radius: 16px;
+    object-fit: contain;
+    border: 4px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  }
+  .leader-name {
+    color: #fff;
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .leader-title-badge {
+    background: rgba(201,168,76,.3);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: .8rem;
+    margin-top: 10px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+  .leader-info {
+    padding: 40px 36px;
+  }
+  .leader-info h3 {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+  }
+  .leader-info .subtitle {
+    color: var(--gold);
+    font-size: .95rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+  }
+  .leader-roles {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .leader-roles li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: .95rem;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+  .leader-roles li i {
+    color: var(--green-main);
+    font-size: 1rem;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ─── ADDRESS ─── */
+  .address-section {
+    background: var(--cream);
+    padding: 80px 20px;
+  }
+  .address-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 5px solid var(--green-main);
+  }
+  .address-icon-wrap {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, var(--green-main), var(--green-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.8rem;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(13,122,95,.3);
+  }
+  .address-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+  }
+  .address-text {
+    font-size: 1.1rem;
+    color: var(--text-mid);
+    line-height: 2;
+    background: var(--cream);
+    padding: 18px 24px;
+    border-radius: 12px;
+    border-right: 4px solid var(--gold);
+  }
+
+  /* ─── SOCIAL ─── */
+  .social-section {
+    background: var(--green-dark);
+    padding: 80px 20px;
+    text-align: center;
+  }
+  .social-section .section-header h2 { color: #fff; }
+  .social-section .section-tag {
+    background: rgba(255,255,255,.12);
+    color: var(--gold-light);
+  }
+  .social-section .section-header p { color: rgba(255,255,255,.75); }
+  .social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .social-card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    padding: 30px 20px;
+    text-decoration: none;
+    transition: all .35s;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+  .social-card:hover {
+    background: rgba(255,255,255,.14);
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,.25);
+  }
+  .social-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    color: #fff;
+  }
+  .yt-bg   { background: linear-gradient(135deg, #c4302b, #ff4444); }
+  .fb-bg   { background: linear-gradient(135deg, #1877f2, #42a5f5); }
+  .ig-bg   { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+  .tg-bg   { background: linear-gradient(135deg, #2ca5e0, #1e90d6); }
+  .social-card span {
+    color: #fff;
+    font-weight: 700;
+    font-size: .95rem;
+  }
+  .social-card small {
+    color: rgba(255,255,255,.6);
+    font-size: .78rem;
+    direction: ltr;
+    word-break: break-all;
+    text-align: center;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0a1e18;
+    color: rgba(255,255,255,0.8);
+    padding: 50px 40px 30px;
+    border-top: 3px solid var(--gold);
+  }
+  body.dark-mode footer {
+    background: #05100c;
+    border-top-color: var(--gold-light);
+  }
+  .footer-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+  .footer-brand img {
+    height: 60px;
+    border-radius: 12px; /* از حالت دایره خارج شد */
+    border: 2px solid var(--gold);
+    margin-bottom: 16px;
+  }
+  .footer-brand p {
+    font-size: .88rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,.7);
+  }
+  .footer-col h4 {
+    color: var(--gold-light);
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+  .footer-col a, .footer-col p {
+    display: block;
+    color: rgba(255,255,255,.7);
+    text-decoration: none;
+    font-size: .88rem;
+    margin-bottom: 10px;
+    transition: color .3s;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 24px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: .82rem;
+    color: rgba(255,255,255,.6);
+    text-align: center;
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 900px) {
+    .navbar { padding: 0 20px; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; right: 0; left: 0; background: var(--card-bg); padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.1); gap: 4px; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+    .about-grid { grid-template-columns: 1fr; }
+    .leader-card { grid-template-columns: 1fr; }
+    .leader-image-side { padding: 36px 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .topbar { justify-content: center; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.4rem; }
+    .about-features { grid-template-columns: 1fr; }
+    .goals-grid { grid-template-columns: 1fr; }
+    footer { padding: 40px 20px 24px; }
+    .footer-bottom { justify-content: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── TOP BAR ─── -->
+<div class="topbar">
+  <span><i class="fas fa-map-marker-alt" style="color:var(--gold-light);margin-left:6px"></i> هرات، درب خوش، جاده خواجه محمد تاکی</span>
+  <div>
+    <a href="https://www.youtube.com/@AnjomanShahidRahmani" target="_blank" rel="noopener" title="یوتیوب"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/AnjomanShahidRahmani" target="_blank" rel="noopener" title="فیسبوک"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/AnjomanShahidRahmani" target="_blank" rel="noopener" title="اینستاگرام"><i class="fab fa-instagram"></i></a>
+    <a href="https://t.me/AnjomanShahidRahmani" target="_blank" rel="noopener" title="تلگرام"><i class="fab fa-telegram"></i></a>
+  </div>
+</div>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="navbar" role="navigation" aria-label="منوی اصلی">
+  <a href="#" class="nav-logo">
+    <img src="https://i.ibb.co/9XyVZ0T/IMG-20211202-103035-143.png" alt="لوگو انجمن" />
+    <div class="nav-logo-text">
+      <h2>انجمن علوم قرآنی</h2>
+      <span>شـهیـد رحمـانی « رح »</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">درباره ما</a></li>
+    <li><a href="#goals">اهداف</a></li>
+    <li><a href="#mission">بیانیه</a></li>
+    <li><a href="#leader">رهبری</a></li>
+    <li><a href="#address">آدرس</a></li>
+    <li><a href="#social">شبکه‌ها</a></li>
+  </ul>
+  <div style="display: flex; align-items: center;">
+    <button class="dark-toggle" id="darkToggle" aria-label="تغییر حالت تاریک/روشن"><i class="fas fa-moon"></i></button>
+    <div class="hamburger" id="hamburger" aria-label="منو" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" aria-label="صفحه اصلی">
+  <div>
+    <h1>
+      انجمن علوم قرآنی<br/>
+      <span>قائد جهاد شهید قاضی<br/>سید عبدالرحیم رحمانی «رح»</span>
+    </h1>
+    <p>نهادی قرآنی و دینی در شهر باستانی هرات، در راستای تعلیم و پرورش نسل مسلمان بر پایه قرآن و سنت نبوی ﷺ وگسترش فرهنگ والای قرآنی در جامعه.</p>
+  </div>
+  <a href="#about" class="hero-scroll" aria-label="پایین‌تر"><i class="fas fa-chevron-down"></i></a>
+</section>
+
+<!-- ─── ABOUT ─── (اصلاح تگ p و لوگو) -->
+<section class="section section-alt" id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-mosque" style="margin-left:6px"></i>معرفی</div>
+      <h2>درباره انجمن</h2>
+      <div class="section-divider"></div>
+      <p>آشنایی با هویت، تاریخچه و ساختار انجمن علوم قرآنی شهید رحمانی «رح»</p>
+    </div>
+    <div class="about-image-wrap">
+      <div class="about-card">
+        <div class="about-card-icon">
+          <img src="https://i.ibb.co/9XyVZ0T/IMG-20211202-103035-143.png" alt="لوگو انجمن" />
+        </div>
+        <h4>انجمن علوم قرآنی قائد جهاد شهید قاضی سید عبدالرحیم رحمانی «رح»</h4>
+        <p>نهادی قرآنی و دینی در هرات که با تأسیس حلقات قرآنی، دوره‌های آموزشی و برنامه‌های فرهنگی در خدمت جامعه مسلمان است.</p>
+        <p>این انجمن در سال ۱۳۹۵ هجری شمسی در شهر باستانی هرات تأسیس گردید.</p>
+        <p>تمرکز اصلی این انجمن، گسترش فرهنگ قرآنی، آموزش قرآن کریم و فعالیت‌های فرهنگی - دینی در میان جوانان، نوجوانان و بزرگسالان برادر و خواهر به‌صورت کاملاً رایگان است.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GOALS ─── -->
+<section class="section" id="goals">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-bullseye" style="margin-left:6px"></i>اهداف</div>
+      <h2>فعالیت‌ها و اهداف انجمن</h2>
+      <div class="section-divider"></div>
+      <p>مجموعه‌ای از برنامه‌های آموزشی، فرهنگی و دینی که این انجمن برگزار می‌کند:</p>
+    </div>
+    <div class="goals-grid">
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-broadcast-tower"></i></div><h3>نشر مفاهیم اسلامی</h3><p>نشر و پخش مفاهیم ناب اسلامی و گسترش فرهنگ والای قرآنی در جامعه به طور حضوری و مجازی</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-network-wired"></i></div><h3>تأسیس حلقات قرآنی</h3><p>تأسیس و گسترش حلقات قرآنی و دارالحفاظ ها در اطراف و اکناف شهر هرات و ولسوالی ها</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-graduation-cap"></i></div><h3>دوره‌های درسی رایگان</h3><p>ایجاد دوره های درسی کوتاه مدت و طویل مدت برای متعلمین و محصلین اعم از خواهر و برادر به‌صورت رایگان در بخش شرعیات تعلیمات اسلامی</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-microphone"></i></div><h3>درس‌های تجوید تخصصی</h3><p>آموزش تجوید تخصصی برای حافظان و قاریان قرآن کریم که به صورت تصویری نیز ثبت و در صفحات اجتماعی پخش می‌گردد</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-hat-wizard"></i></div><h3>برگزاری محافل دستاربندی</h3><p>برگزاری محافل بزرگ دستاربندی برای حافظان و قاریان قرآن کریم زیرمجموعه انجمن</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-trophy"></i></div><h3>مسابقات حفظ و قرائت</h3><p>برگزاری مسابقات حفظ و قرائت قرآن کریم و همچنین مسابقات علوم قرآنی بین حافظان و قاریان</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-heart"></i></div><h3>محافل انس با قرآن</h3><p>برگزاری محافل انس با قرآن کریم برای ایجاد پیوند عمیق با کلام الهی و تامل و تدبر در قرآن کریم</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-music"></i></div><h3>مسابقات نشیدهای اسلامی</h3><p>برگزاری مسابقات نشیدهای اسلامی و سرودهای دینی گروهی</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-eye"></i></div><h3>دید و بازدید حلقات</h3><p>نظارت و دید و بازدید منظم و بررسی حلقات قرآنی زیرمجموعه انجمن شهید رحمانی «رح»</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-calendar-check"></i></div><h3>جلسات ماهوار</h3><p>برگزاری جلسات ماهوار برای مسئولین و اساتید حلقات زیرمجموعه انجمن</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-users"></i></div><h3>روابط حسنه بین قاریان</h3><p>ایجاد و تحکیم روابط حسنه بین فارقین حلقات زیرمجموعه انجمن</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-hiking"></i></div><h3>سیرهای علمی و تفریحی</h3><p>برگزاری برنامه‌های علمی و تفریحی با هدف تقویت روحیه و تحکیم پیوند میان اعضا</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MISSION (اصلاح تایپی) ─── -->
+<section class="mission" id="mission">
+  <div class="mission-inner">
+    <div class="mission-icon"><i class="fas fa-book-open"></i></div> <!-- آیکون اصلاح شده -->
+    <div class="bismillah">بیانیه</div>
+    <div class="mission-text">
+      <p>زندگی یک انسان مسلمان دارای ابعاد و مفاهیم بنیادینی است که در شکل‌گیری شخصیت و ایفای مسئولیت‌های والای ایمانی او نقش اساسی دارد. برای تحقق این هدف، لازم است انسان مؤمن در بُعد فکری و فرهنگی به‌درستی پرورش یافته و همواره پویا، زنده و رو به رشد باقی بماند.</p>
+      <p>در همین راستا، انجمن علوم قرآنی قائد جهاد شهید قاضی سید عبدالرحیم رحمانی «رح»، رسالت خود دانسته است تا در مسیر تربیت نسل جوان، اعم از خواهران و برادران، در پرتو قرآن کریم و سنت نبوی صلی‌الله‌علیه‌وسلم، به برگزاری دوره‌های آموزشی منظم و هدفمند اقدام نماید؛ تا این مفاهیم به‌عنوان سرچشمه فکر، شعور و استواری شخصیت در وجود آنان نهادینه گردد.</p>
+      <p>باور راسخ بر این است که از طریق برگزاری همین دوره‌ها، شناخت عمیق و تخصصی از ضرورت‌های اعتقادی، عبادی، اخلاقی، اجتماعی و اقتصادی اسلام — که بر عهده هر فرد مسلمان است — به‌گونه‌ای مؤثر و عملی تحقق خواهد یافت.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LEADER (با max-height تصویر) ─── -->
+<section class="section section-alt" id="leader">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-user-tie" style="margin-left:6px"></i>رهبری</div>
+      <h2>رئیس و بنیانگذار انجمن</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="leader-card">
+      <div class="leader-image-side">
+        <img src="https://i.ibb.co/bhH0J5x/photo-2026-04-17-06-13-04.jpg"
+             alt="الحاج قاری سید عبدالسمیع رحمانی"
+             class="leader-img" />
+        <div class="leader-name">الحاج قاری سید عبدالسمیع رحمانی «حفظه الله»</div>
+        <div class="leader-title-badge">رهبر قراء افغانستان</div>
+      </div>
+      <div class="leader-info">
+        <h3>الحاج قاری سید عبدالسمیع رحمانی «حفظه الله»</h3>
+        <div class="subtitle"><i class="fas fa-star" style="margin-left:6px;color:var(--gold)"></i>رئیس انجمن علوم قرآنی شهید رحمانی «رح»</div>
+        <ul class="leader-roles">
+          <li><i class="fas fa-check-circle"></i> رهبر قراء و استاد القراء در زون غرب افغانستان</li>
+          <li><i class="fas fa-check-circle"></i> شخصیت محترم و شناخته شده در جامعه افغانستان</li>
+          <li><i class="fas fa-check-circle"></i> رئیس و بنیانگذار مدرسه سیدنا محمد رسول الله ﷺ</li>
+          <li><i class="fas fa-check-circle"></i> بنیانگذار انجمن علوم قرآنی شهید رحمانی «رح»</li>
+          <li><i class="fas fa-check-circle"></i> مسئول دارالحفاظ شهید رحمانی «رح»</li>
+          <li><i class="fas fa-check-circle"></i> مسئول دارالحفاظ خواجه محمد تاکی رحمانی «رحمه الله»</li>
+          <li><i class="fas fa-check-circle"></i> رئیس دارالحفاظ سیدنا امام حسن رضی‌الله‌عنه</li>
+          <li><i class="fas fa-check-circle"></i> بنیانگذار و مسئول مراکز دیگر قرآنی در هرات</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ADDRESS ─── -->
+<section class="address-section" id="address">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-location-dot" style="margin-left:6px"></i>موقعیت</div>
+      <h2>آدرس انجمن شهید رحمانی «رح»</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="address-card">
+      <div class="address-icon-wrap"><i class="fas fa-map-pin"></i></div>
+      <h3>دفتر مرکزی انجمن شهید رحمانی «رح»</h3>
+      <div class="address-text">
+        <i class="fas fa-location-dot" style="color:var(--green-main);margin-left:8px"></i>
+        هرات، درب خوش، جاده خواجه محمد تاکی،<br/>
+        جنب مسجد جامع خواجه محمد تاکی (علیه الرحمه)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOCIAL ─── -->
+<section class="social-section" id="social">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-share-nodes" style="margin-left:6px"></i>صفحات اجتماعی</div>
+      <h2>ما را دنبال کنید</h2>
+      <div class="section-divider"></div>
+      <p>محتوای قرآنی، دروس تجوید و برنامه‌های فرهنگی را از صفحات اجتماعی انجمن دنبال کنید</p>
+    </div>
+    <div class="social-grid">
+      <a href="https://www.youtube.com/@AnjomanShahidRahmani" target="_blank" rel="noopener" class="social-card"><div class="social-card-icon yt-bg"><i class="fab fa-youtube"></i></div><span>یوتیوب</span><small>کانال یوتیوب انجمن شهید رحمانی</small></a>
+      <a href="https://www.facebook.com/AnjomanShahidRahmani" target="_blank" rel="noopener" class="social-card"><div class="social-card-icon fb-bg"><i class="fab fa-facebook-f"></i></div><span>فیسبوک</span><small>صفحه فیسبوک انجمن شهید رحمانی</small></a>
+      <a href="https://instagram.com/AnjomanShahidRahmani" target="_blank" rel="noopener" class="social-card"><div class="social-card-icon ig-bg"><i class="fab fa-instagram"></i></div><span>اینستاگرام</span><small>صفحه اینستاگرام انجمن شهید رحمانی</small></a>
+      <a href="https://t.me/AnjomanShahidRahmani" target="_blank" rel="noopener" class="social-card"><div class="social-card-icon tg-bg"><i class="fab fa-telegram-plane"></i></div><span>تلگرام</span><small>کانال تلگرام انجمن شهید رحمانی</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER (لوگو با گردی کم) ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://i.ibb.co/9XyVZ0T/IMG-20211202-103035-143.png" alt="لوگو انجمن" />
+      <p>انجمن علوم قرآنی شهید رحمانی رحمه‌الله</p>
+    </div>
+    <div class="footer-col">
+      <h4>لینک‌های سریع</h4>
+      <a href="#about">درباره انجمن</a>
+      <a href="#goals">اهداف و برنامه‌ها</a>
+      <a href="#mission">بیانیه انجمن</a>
+      <a href="#leader">رئیس انجمن</a>
+      <a href="#address">آدرس انجمن</a>
+    </div>
+    <div class="footer-col">
+      <h4>تماس با ما</h4>
+      <p><i class="fas fa-map-marker-alt" style="color:var(--gold);margin-left:6px"></i>هرات، درب خوش، جنب مسجد جامع خواجه محمد تاکی «علیه الرحمه»</p>
+      <a href="https://t.me/AnjomanShahidRahmani" target="_blank" rel="noopener"><i class="fab fa-telegram" style="margin-left:6px"></i>تلگرام ما</a>
+      <a href="https://www.youtube.com/@AnjomanShahidRahmani" target="_blank" rel="noopener"><i class="fab fa-youtube" style="margin-left:6px"></i>یوتیوب ما</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© انجمن شهید رحمانی «رح» - ۱۴۰۵</span>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    // Dark mode with localStorage
+    const darkToggle = document.getElementById('darkToggle');
+    const body = document.body;
+    const prefersDark = localStorage.getItem('theme');
+    if (prefersDark === 'dark') {
+      body.classList.add('dark-mode');
+      const icon = darkToggle.querySelector('i');
+      if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+    } else if (prefersDark === 'light') {
+      body.classList.remove('dark-mode');
+      const icon = darkToggle.querySelector('i');
+      if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+    darkToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const icon = darkToggle.querySelector('i');
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => { navLinks.classList.toggle('open'); });
+      hamburger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') navLinks.classList.toggle('open'); });
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => navLinks.classList.remove('open'));
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
