@@ -160,7 +160,7 @@
 
   /* ─── HERO ─── */
   .hero {
-    min-height: 100vh;
+    min-height: 80vh;
     background:
       linear-gradient(135deg, rgba(10,92,68,.92) 0%, rgba(13,122,95,.78) 50%, rgba(26,171,133,.65) 100%),
       url('https://images.unsplash.com/photo-1585036156171-384164a8c675?w=1600&q=80') center/cover no-repeat;
@@ -788,6 +788,11 @@
 }
 .by-yaser a:hover {
   color: var(--gold-light);
+}
+@media (max-width: 600px) {
+  .hero {
+    padding: 30px 15px 30px;
+  }
 }
 </style>
 </head>
