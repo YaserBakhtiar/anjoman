@@ -55,26 +55,6 @@
   ::-webkit-scrollbar-track { background: var(--cream); }
   ::-webkit-scrollbar-thumb { background: var(--green-main); border-radius: 4px; }
 
-  /* ─── TOP BAR ─── */
-  .topbar {
-    background: var(--green-dark);
-    color: rgba(255,255,255,0.85);
-    font-size: .82rem;
-    padding: 8px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .topbar a {
-    color: var(--gold-light);
-    text-decoration: none;
-    margin-left: 14px;
-    font-size: 1.1rem;
-    transition: color .3s;
-  }
-  .topbar a:hover { color: #fff; }
 
   /* ─── NAVBAR ─── */
   .navbar {
@@ -103,10 +83,8 @@
   .nav-logo img {
     height: 58px;
     width: 58px;
-    border-radius: 12px;  /* از حالت دایره خارج شد، فقط کمی گرد */
-    border: 3px solid var(--gold);
+    border-radius: 12px;
     object-fit: cover;
-    box-shadow: 0 3px 12px var(--shadow);
   }
   .nav-logo-text h2 {
     font-size: .95rem;
@@ -190,7 +168,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 120px 20px 80px;
+    padding: 80px 20px 60px;
     position: relative;
     overflow: hidden;
   }
@@ -200,23 +178,11 @@
     inset: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
-  .hero-badge {
-    display: inline-block;
-    background: rgba(201,168,76,.25);
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    padding: 6px 20px;
-    border-radius: 30px;
-    font-size: .85rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-  }
   .hero h1 {
     font-size: clamp(1.6rem, 4vw, 3rem);
     font-weight: 900;
     color: #fff;
-    line-height: 1.4;
+    line-height: 2;
     max-width: 800px;
     margin: 0 auto 16px;
     text-shadow: 0 2px 20px rgba(0,0,0,.3);
@@ -229,44 +195,9 @@
     margin: 0 auto 36px;
     line-height: 1.8;
   }
-  .hero-btns {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
-    color: var(--green-dark);
-    padding: 14px 32px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 1rem;
-    box-shadow: 0 6px 20px rgba(201,168,76,.4);
-    transition: all .3s;
-  }
-  .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 28px rgba(201,168,76,.5);
-  }
-  .btn-outline {
-    border: 2px solid rgba(255,255,255,.7);
-    color: #fff;
-    padding: 12px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1rem;
-    transition: all .3s;
-  }
-  .btn-outline:hover {
-    background: rgba(255,255,255,.15);
-    border-color: #fff;
-  }
   .hero-scroll {
     position: absolute;
-    bottom: 30px;
+    bottom: 75px;
     left: 50%;
     transform: translateX(-50%);
     color: rgba(255,255,255,.6);
@@ -279,7 +210,7 @@
   }
 
   /* ─── SECTION WRAPPER ─── */
-  .section { padding: 80px 20px; }
+  .section { padding: 30px 20px; }
   .section-alt { background: var(--white); }
   .container { max-width: 1100px; margin: 0 auto; }
 
@@ -694,7 +625,7 @@
   .social-section .section-header p { color: rgba(255,255,255,.75); }
   .social-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
@@ -767,8 +698,7 @@
   }
   .footer-brand img {
     height: 60px;
-    border-radius: 12px; /* از حالت دایره خارج شد */
-    border: 2px solid var(--gold);
+    border-radius: 12px;
     margin-bottom: 16px;
   }
   .footer-brand p {
@@ -803,7 +733,17 @@
     color: rgba(255,255,255,.6);
     text-align: center;
   }
+@media (max-width: 900px) {
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
+@media (max-width: 600px) {
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+}
   /* ─── MOBILE ─── */
   @media (max-width: 900px) {
     .navbar { padding: 0 20px; }
@@ -823,20 +763,35 @@
     footer { padding: 40px 20px 24px; }
     .footer-bottom { justify-content: center; text-align: center; }
   }
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3px;              /* فاصله خیلی کم و کنترل‌شده */
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+.footer-bottom div {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+.by-yaser {
+  margin: 0;
+  padding: 0;
+}
+.by-yaser a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-weight: 600;
+}
+.by-yaser a:hover {
+  color: var(--gold-light);
+}
 </style>
 </head>
 <body>
-
-<!-- ─── TOP BAR ─── -->
-<div class="topbar">
-  <span><i class="fas fa-map-marker-alt" style="color:var(--gold-light);margin-left:6px"></i> هرات، درب خوش، جاده خواجه محمد تاکی</span>
-  <div>
-    <a href="https://www.youtube.com/@AnjomanShahidRahmani" target="_blank" rel="noopener" title="یوتیوب"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com/AnjomanShahidRahmani" target="_blank" rel="noopener" title="فیسبوک"><i class="fab fa-facebook"></i></a>
-    <a href="https://instagram.com/AnjomanShahidRahmani" target="_blank" rel="noopener" title="اینستاگرام"><i class="fab fa-instagram"></i></a>
-    <a href="https://t.me/AnjomanShahidRahmani" target="_blank" rel="noopener" title="تلگرام"><i class="fab fa-telegram"></i></a>
-  </div>
-</div>
 
 <!-- ─── NAVBAR ─── -->
 <nav class="navbar" role="navigation" aria-label="منوی اصلی">
@@ -918,8 +873,8 @@
       <div class="goal-card"><div class="goal-icon"><i class="fas fa-music"></i></div><h3>مسابقات نشیدهای اسلامی</h3><p>برگزاری مسابقات نشیدهای اسلامی و سرودهای دینی گروهی</p></div>
       <div class="goal-card"><div class="goal-icon"><i class="fas fa-eye"></i></div><h3>دید و بازدید حلقات</h3><p>نظارت و دید و بازدید منظم و بررسی حلقات قرآنی زیرمجموعه انجمن شهید رحمانی «رح»</p></div>
       <div class="goal-card"><div class="goal-icon"><i class="fas fa-calendar-check"></i></div><h3>جلسات ماهوار</h3><p>برگزاری جلسات ماهوار برای مسئولین و اساتید حلقات زیرمجموعه انجمن</p></div>
-      <div class="goal-card"><div class="goal-icon"><i class="fas fa-users"></i></div><h3>روابط حسنه بین قاریان</h3><p>ایجاد و تحکیم روابط حسنه بین فارقین حلقات زیرمجموعه انجمن</p></div>
-      <div class="goal-card"><div class="goal-icon"><i class="fas fa-hiking"></i></div><h3>سیرهای علمی و تفریحی</h3><p>برگزاری برنامه‌های علمی و تفریحی با هدف تقویت روحیه و تحکیم پیوند میان اعضا</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-users"></i></div><h3>همبستگی بین قاریان</h3><p>ایجاد و تحکیم روابط حسنه بین حافظان و قاریان فارغین حلقات زیرمجموعه انجمن</p></div>
+      <div class="goal-card"><div class="goal-icon"><i class="fas fa-hiking"></i></div><h3>سیرهای علمی و تفریحی</h3><p>برگزاری برنامه‌های علمی و تفریحی با هدف تقویت روحیه و تحکیم پیوند میان اعضای انجمن</p></div>
     </div>
   </div>
 </section>
@@ -959,7 +914,7 @@
         <ul class="leader-roles">
           <li><i class="fas fa-check-circle"></i> رهبر قراء و استاد القراء در زون غرب افغانستان</li>
           <li><i class="fas fa-check-circle"></i> شخصیت محترم و شناخته شده در جامعه افغانستان</li>
-          <li><i class="fas fa-check-circle"></i> رئیس و بنیانگذار مدرسه سیدنا محمد رسول الله ﷺ</li>
+          <li><i class="fas fa-check-circle"></i> رئیس و بنیانگذار دارالعلوم و دارالحفاظ سیدنا محمد رسول الله ﷺ</li>
           <li><i class="fas fa-check-circle"></i> بنیانگذار انجمن علوم قرآنی شهید رحمانی «رح»</li>
           <li><i class="fas fa-check-circle"></i> مسئول دارالحفاظ شهید رحمانی «رح»</li>
           <li><i class="fas fa-check-circle"></i> مسئول دارالحفاظ خواجه محمد تاکی رحمانی «رحمه الله»</li>
@@ -1031,9 +986,15 @@
       <a href="https://www.youtube.com/@AnjomanShahidRahmani" target="_blank" rel="noopener"><i class="fab fa-youtube" style="margin-left:6px"></i>یوتیوب ما</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© انجمن شهید رحمانی «رح» - ۱۴۰۵</span>
+<div class="footer-bottom">
+  <div>© انجمن شهید رحمانی «رح» - ۱۴۰۵</div>
+  <div class="by-yaser">
+    Developed by
+    <a href="https://yaserbakhtiar.github.io/" target="_blank">
+      Yaser Bakhtiar
+    </a>
   </div>
+</div>
 </footer>
 
 <script>
